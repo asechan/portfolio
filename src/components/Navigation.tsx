@@ -54,10 +54,13 @@ export default function Navigation() {
   return (
     <header 
       className={cn(
-        "fixed top-0 left-0 right-0 z-40 p-6 md:p-12 flex justify-between items-center pointer-events-none transition-transform duration-300",
+        "fixed top-0 left-0 right-0 z-40 p-6 md:p-12 flex justify-between items-center pointer-events-none transition-transform duration-300 max-md:pb-8 max-md:pt-[max(1.5rem,env(safe-area-inset-top))]",
         hidden ? "max-md:-translate-y-[150%]" : "translate-y-0"
       )}
     >
+      {/* Seamless gradient and blur for mobile only */}
+      <div className="absolute inset-0 z-[-1] md:hidden bg-gradient-to-b from-background/90 via-background/70 to-transparent backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)] pointer-events-none" />
+      
       <div className="flex items-center gap-6 pointer-events-auto">
         <a
           href="#home"
