@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} ${manrope.variable}`} suppressHydrationWarning>
       <body className="antialiased min-h-screen bg-transparent text-foreground font-sans overflow-x-hidden selection:bg-accent-sage/30 selection:text-foreground flex flex-col relative">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <SmoothScroll>
             <NoiseOverlay />
             <Navigation />
