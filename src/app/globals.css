@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-accent-sage: var(--sage);
+  --color-accent-slate: var(--slate);
+  --font-sans: var(--font-manrope);
+  --font-heading: var(--font-outfit);
+}
+
+@layer base {
+  :root {
+    --bg: #f7f7f5;
+    --fg: #2c2c2e;
+    --sage: #8ea395;
+    --slate: #a3b1c6;
+  }
+  .dark {
+    --bg: #111112;
+    --fg: #eaeaea;
+    --sage: #3f5546; /* A slightly brighter sage for dark mode to ensure it remains visible as an accent */
+    --slate: #3a4656;
+  }
+
+  body {
+    @apply bg-transparent text-foreground antialiased selection:bg-accent-sage/30;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-light tracking-tight;
+  }
+}
+
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+
+
