@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { useLenis } from "lenis/react";
@@ -25,8 +25,21 @@ export default function Navigation() {
   const lenis = useLenis();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
+  const [lastY, setLastY] = useState(0);
 
   useEffect(() => setMounted(true), []);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > lastY && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+    setLastY(latest);
+  });
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     e.preventDefault();
@@ -39,7 +52,12 @@ export default function Navigation() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 p-6 md:p-12 flex justify-between items-center pointer-events-none">
+    <header 
+      className={cn(
+        "fixed top-0 left-0 right-0 z-40 p-6 md:p-12 flex justify-between items-center pointer-events-none transition-transform duration-300",
+        hidden ? "max-md:-translate-y-full" : "translate-y-0"
+      )}
+    >
       <div className="flex items-center gap-6 pointer-events-auto">
         <a
           href="#home"

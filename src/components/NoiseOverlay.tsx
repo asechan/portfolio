@@ -16,7 +16,7 @@ export default function NoiseOverlay() {
 
   return (
     <>
-      <div className="fixed inset-0 z-[-1] opacity-70">
+      <div className="fixed inset-0 z-[-1] opacity-70 scale-[1.1]">
         <GradientWaves
           horizonColor={isDark ? "#111112" : "#f7f7f5"}
           waveColor={isDark ? "#1e2621" : "#8ea395"}
