@@ -55,7 +55,7 @@ export default function Navigation() {
     <header 
       className={cn(
         "fixed top-0 left-0 right-0 z-40 p-6 md:p-12 flex justify-between items-center pointer-events-none transition-transform duration-300",
-        hidden ? "max-md:-translate-y-full" : "translate-y-0"
+        hidden ? "max-md:-translate-y-[150%]" : "translate-y-0"
       )}
     >
       <div className="flex items-center gap-6 pointer-events-auto">
